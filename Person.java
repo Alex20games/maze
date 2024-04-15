@@ -19,6 +19,7 @@ public class Person extends Actor
         moveAround();
         hitEnemy();
         hitFood();
+        hitBom();
     }
     public boolean hitHome(){
        if(isTouching(Home.class)){
@@ -63,6 +64,15 @@ public class Person extends Actor
         }
     }
     
+    public boolean hitBom(){
+       if(isTouching(Bom.class)){
+           return true;
+       }
+       else{
+        return false;
+        }
+    }
+    
     
     public void moveAround(){
         if(Greenfoot.isKeyDown("up")){
@@ -71,23 +81,43 @@ public class Person extends Actor
                 setLocation(getX(), getY()+2);
             }
             if(hitHome() == true){
-                World level2 = new FishWorld();
+                World level2 = new Gameover();
                 Greenfoot.setWorld(level2);
+            }
+            if(hitBom() == true){
+                World Gameover = new Gameover();
+                Greenfoot.setWorld(Gameover);
             }
         }
         if(Greenfoot.isKeyDown("down")){
             setLocation(getX(), getY()+1);
-            
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX(), getY()-2);
+            }
+            if(hitBom() == true){
+                World Gameover = new Gameover();
+                Greenfoot.setWorld(Gameover);
+            }
         }
         if(Greenfoot.isKeyDown("right")){
             setLocation(getX()+1, getY());
-            
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX()-2, getY());
+            }
+            if(hitBom() == true){
+                World Gameover = new Gameover();
+                Greenfoot.setWorld(Gameover);
+            }
         }
         if(Greenfoot.isKeyDown("left")){
             setLocation(getX()-1, getY());
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX()+2, getY());
+            }
+            if(hitBom() == true){
+                World Gameover = new Gameover();
+                Greenfoot.setWorld(Gameover);
+            }
         }
     }
 }

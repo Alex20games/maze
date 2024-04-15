@@ -48,10 +48,10 @@ public class MyWorld extends World
                 {Greenfoot.getRandomNumber(2)+2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
                 {1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1},
                 {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0},
-                {0, 1, 0, 1, 0, 0, 1, 0, 1, 2, 1, 0},
-                {0, 1, 1, 1, 0, 1, 1, 0, Greenfoot.getRandomNumber(2)+2, 0, 1, 1},
+                {0, 1, 5, 1, 5, 0, 1, 0, 1, 2, 1, 5},
+                {0, 1, 1, 1, 1, 1, 1, 0, Greenfoot.getRandomNumber(2)+2, 0, 1, 1},
                 {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, Greenfoot.getRandomNumber(2)+2},
-                {Greenfoot.getRandomNumber(2)+2, 1, 0, 1, 0, 1, 1, 0, 0, 1, Greenfoot.getRandomNumber(2)+2, 0},
+                {Greenfoot.getRandomNumber(2)+2, 1, 0, 1, 0, 1, 1, 0, 5, 1, Greenfoot.getRandomNumber(2)+2, 0},
                 {1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0},
                 {0, 0, 0, Greenfoot.getRandomNumber(2)+2, 0, Greenfoot.getRandomNumber(2)+2, 1, 0, 0, 0, 0, 0},
 
@@ -67,7 +67,10 @@ public class MyWorld extends World
                 }  
                 else if(maze[i][j] == 3){
                     addObject(new Enemy(),x,y);
-                }  
+                }
+                else if(maze[i][j] == 5) {
+                    addObject(new Bom(), x, y);
+                }
                 x = x+50;
             }
             y= y+50;
